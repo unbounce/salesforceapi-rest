@@ -16,6 +16,7 @@ Gem::Specification.new do |gem|
   gem.version       = Salesforceapi::Rest::VERSION
 
   gem.add_development_dependency 'rspec'
+  gem.add_development_dependency 'rack-test'
   gem.add_development_dependency "rforce"
   gem.add_development_dependency "omniauth"
   gem.add_development_dependency "httparty"
