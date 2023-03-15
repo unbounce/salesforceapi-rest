@@ -32,7 +32,7 @@ module Salesforceapi
         @refresh_token = refresh_token
         @client_id = client_id
         @client_secret = client_secret
-        @api_version = "54.0"
+        @api_version = "21.0"
         # @api_version = "21.0"
         # @metadata_uri = metadata_uri.gsub("{version}", @api_version)
         @metadata_uri = metadata_uri.gsub("{version}", @api_version)
