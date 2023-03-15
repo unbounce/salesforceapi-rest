@@ -28,10 +28,13 @@ module Salesforceapi
       end
 
       def initialize(refresh_token, metadata_uri, client_id, client_secret)
+        binding.pry
         @refresh_token = refresh_token
         @client_id = client_id
         @client_secret = client_secret
-        @api_version = "v57.0"
+        @api_version = "57.0"
+        # @api_version = "21.0"
+        # @metadata_uri = metadata_uri.gsub("{version}", @api_version)
         @metadata_uri = metadata_uri.gsub("{version}", @api_version)
         @ssl_port = 443  # TODO, right SF use port 443 for all HTTPS traffic.
 
@@ -114,6 +117,7 @@ module Salesforceapi
 
 
       def add_custom_field(attributes)
+        binding.pry
         config_authorization!
         auth_header = {
           "Authorization" => "OAuth " + @access_token,
