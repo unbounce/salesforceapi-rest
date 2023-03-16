@@ -32,9 +32,7 @@ module Salesforceapi
         @refresh_token = refresh_token
         @client_id = client_id
         @client_secret = client_secret
-        @api_version = "21.0"
-        # @api_version = "21.0"
-        # @metadata_uri = metadata_uri.gsub("{version}", @api_version)
+        @api_version = "57.0"
         @metadata_uri = metadata_uri.gsub("{version}", @api_version)
         @ssl_port = 443  # TODO, right SF use port 443 for all HTTPS traffic.
 
@@ -43,7 +41,7 @@ module Salesforceapi
 
       def create(object, attributes)
         config_authorization!
-        path = "/services/data/#{@api_version}/sobjects/#{object}/"
+        path = "/services/data/v#{@api_version}/sobjects/#{object}/"
         target = @instance_uri + path
 
         self.class.base_uri @instance_uri
@@ -62,7 +60,7 @@ module Salesforceapi
       end
 
       def describe(object)
-        path = "/services/data/#{@api_version}/sobjects/#{object}/describe"
+        path = "/services/data/v#{@api_version}/sobjects/#{object}/describe"
         config_authorization!
         target = @instance_uri + path
 
@@ -78,7 +76,7 @@ module Salesforceapi
       end
 
       def resources
-        path = "/services/data/#{@api_version}"
+        path = "/services/data/v#{@api_version}"
         config_authorization!
         target = @instance_uri + path
 
@@ -117,7 +115,6 @@ module Salesforceapi
 
 
       def add_custom_field(attributes)
-        binding.pry
         config_authorization!
         auth_header = {
           "Authorization" => "OAuth " + @access_token,
