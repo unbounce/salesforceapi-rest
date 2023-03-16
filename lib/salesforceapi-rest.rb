@@ -28,7 +28,6 @@ module Salesforceapi
       end
 
       def initialize(refresh_token, metadata_uri, client_id, client_secret)
-        binding.pry
         @refresh_token = refresh_token
         @client_id = client_id
         @client_secret = client_secret
